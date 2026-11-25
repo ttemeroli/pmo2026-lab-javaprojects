@@ -1,19 +1,10 @@
 package it.unibo.oop.jcf.ex3;
 
-/**
- * This interface represents a product.
- * 
- */
-public interface Product {
-
-    /**
-     * @return the product name
-     */
+public interface Product 
+{
     String getName();
 
-    /**
-     * @return the amount of product
-     */
     double getQuantity();
 
+	void hasCode();
 }

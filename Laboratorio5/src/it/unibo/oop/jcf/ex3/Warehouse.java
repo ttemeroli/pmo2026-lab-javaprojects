@@ -6,14 +6,9 @@ import java.util.Set;
  * This interface models a warehouse.
  * 
  */
-public interface Warehouse {
+public interface Warehouse 
+{
 
-    /**
-     * Adds a product, assuming there is no other with same name already there.
-     * 
-     * @param p
-     *            the product to add
-     */
     void addProduct(Product p);
 
     /**

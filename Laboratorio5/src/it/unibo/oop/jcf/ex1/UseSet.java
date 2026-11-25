@@ -1,8 +1,8 @@
 package it.unibo.oop.jcf.ex1;
 
-import java.util.Set;
-import java.util.SortedSet;
-import java.util.TreeSet;
+import java.util.*;
+
+
 
 /**
  * Example class using {@link Set}.
@@ -10,11 +10,6 @@ import java.util.TreeSet;
  */
 public final class UseSet 
 {
-
-    private UseSet() 
-    {
-    }
-
     /**
      * @param args
      *            ignored
@@ -39,34 +34,57 @@ public final class UseSet
          * 
          * 6) Verifies if all the numbers left in the set are even
          */
+    	Set<String> set = new TreeSet<>();
     	
-    	/*
-    	Set<Integer> set = new TreeSet<>();
-    	set.add(10);
-    	set.add(1);
-    	set.add(20);
-    	set.add(2);
-    	set.add(2);
+    	for (int i = 0; i < 20; i++)
+    		set.add(Integer.toString(i));
     	
+    	/* Questa Struttura Dati ordina gli elementi secondo un ordine lessicografico o alfabetico*/
     	System.out.println("Dimensione: " + set.size());
-    	System.out.println(set);*/
+    	System.out.println(set);
     	
-    	SortedSet<Team> sortedSet = new TreeSet<>();
     	
-    	Team t1 = new Team("Juve");
-    	Team t2 = new Team("Inter");
-    	Team t3 = new Team("Milan");
+    	//set.removeIf(i -> Integer.parseInt(i) % 3 == 0);
     	
-    	sortedSet.add(t1);	/* Invocazione implicita di compareTo*/
-    	sortedSet.add(t2);	/* Invocazione implicita di compareTo*/
-    	sortedSet.add(t3);	/* Invocazione implicita di compareTo*/
-    		
-    	sortedSet.getFirst().win();
-    	sortedSet.getLast().draw();
+    	Iterator<String> iterator = set.iterator();
+
+    	while (iterator.hasNext()) 
+    	{
+    	    String i = iterator.next();
+    	    int k = Integer.parseInt(i);
+    	    
+    	    if (k % 3 == 0) {
+    	        iterator.remove(); 
+    	    }
+    	}
     	
-    	sortedSet.remove(t2);
-    	
-    	System.out.println(sortedSet);
+    	System.out.println("\nDimensione: " + set.size());
+    	System.out.print("[");
+    	for(String i : set)
+    		System.out.print(i + ", ");
+    	System.out.println("]");
     
+    	
+    	boolean hasAllEven = hasAllEven(set);
+    	String s = (hasAllEven) ? "Gli elementi sono tutti pari": "Elementi pari e dispari";
+    	System.out.println(s);
+    	
+    }
+    
+    private static boolean hasAllEven(Set<String> set)
+    {
+    	/* La variabile iterator è meglio ricrearla */
+    	Iterator<String> iterator = set.iterator();
+    	int counter = 0;
+    	
+    	while (iterator.hasNext()) 
+    	{
+    	    String i = iterator.next();
+    	    int k = Integer.parseInt(i);
+    	    
+    	    if (k % 2 == 0)
+    	        counter++;
+    	}
+    	return (counter == set.size()) ? true : false;
     }
 }
