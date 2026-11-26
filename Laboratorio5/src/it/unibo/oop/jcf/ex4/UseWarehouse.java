@@ -1,52 +1,50 @@
 package it.unibo.oop.jcf.ex4;
 
+import java.util.Set;
+
 import it.unibo.oop.jcf.ex3.Product;
-import it.unibo.oop.jcf.ex3.Warehouse;
 
-/**
- *
- */
-public final class UseWarehouse {
 
-    private UseWarehouse() {
-    }
+public final class UseWarehouse 
+{
 
-    /**
-     * @param args
-     *            unused
-     */
-    public static void main(final String[] args) {
-        /*
-         * Provide a different solution to the previous exercise by implementing
-         * two classes: ComparableProduct and OrderedWarehouse. Classes from the
-         * previous exercise can be extended and reused, but not modified.
+   
+    public static void main(final String[] args) 
+    {
+    	/*
+         * Fornisci una soluzione diversa rispetto all'esercizio precedente implementando
+         * due classi: ComparableProduct e OrderedWarehouse. Le classi dell'esercizio precedente
+         * possono essere estese e riutilizzate, ma non modificate.
          *
-         * The new solution must comply to these new requirements:
+         * La nuova soluzione deve rispettare questi nuovi requisiti:
          *
-         * 1) allProducts() returns the products lexicographically ordered. Prefer
-         * solutions that reuse existing code.
+         * 1) allProducts() restituisce i prodotti ordinati lessicograficamente. Preferisci
+         * soluzioni che riutilizzano il codice esistente.
          *
-         * 2) The implementation of Product must implement Comparable<Product>.
+         * 2) L'implementazione di Product deve implementare Comparable<Product>.
          */
-        final Product p1 = null;
-        final Product p2 = null;
-        final Product p3 = null;
+    	
+    	final Product p1 = new ComparableProduct("Arco", 1);
+        final Product p2 = new ComparableProduct("Forchetta", 2);
+        final Product p3 = new ComparableProduct("Sedia", 2);
 
-        final Warehouse w = null;
+        final OrderedWarehouse w = new OrderedWarehouse();
+
         w.addProduct(p3);
         w.addProduct(p1);
         w.addProduct(p2);
 
-        System.out.println(w.allNames());
-        System.out.println(w.allProducts());
+        System.out.println("Nomi: " + w.allNames());
+        System.out.println("PRODOTTI ORDINATI:\n" + w.allProducts());
 
-        // Changes to the returned set should not affect the warehouse
-        final var modifiedProductSet = w.allProducts();
+        // Le modifiche al Set restituito non modificano il magazzino
+        final Set<Product> modifiedProductSet = w.allProducts();
+
         modifiedProductSet.remove(p1);
 
-        System.out.println(w.allNames());
+        System.out.println("Nomi: " + w.allNames());
         System.out.println(w.allProducts());
-        System.out.println(modifiedProductSet);
+        System.out.println("PRODOTTI MODIFICATI ORDINATI:\n" + modifiedProductSet);
     }
 
 }

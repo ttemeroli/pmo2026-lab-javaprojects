@@ -39,14 +39,12 @@ public class WarehouseImpl implements Warehouse
 	@Override
 	public boolean containsProduct(Product p) 
 	{
-		
 		return p != null && this.product.contains(p);
 	}
 
 	@Override
 	public double getQuantity(String name) 
 	{
-		
 		double quantity = 0.0;
 		
 		for(Product p : product)

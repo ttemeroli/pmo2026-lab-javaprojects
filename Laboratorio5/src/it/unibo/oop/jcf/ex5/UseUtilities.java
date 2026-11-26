@@ -5,18 +5,12 @@ import java.util.Collection;
 import java.util.Set;
 import java.util.TreeSet;
 
-/**
- * Simple the class to test {it.unibo.oop.lab05.Utilities} class.
- */
-public final class UseUtilities {
 
-    private UseUtilities() { }
+public final class UseUtilities 
+{
 
-    /**
-     * @param s
-     *            unused
-     */
-    public static void main(final String[] s) {
+    public static void main(final String[] s) 
+    {
         final var setA = Set.of("a", "b", "c", "d");
         final var setB = Set.of("c", "d", "e");
 
@@ -24,19 +18,26 @@ public final class UseUtilities {
         assertEquals(Set.of("c", "d"), Utilities.setIntersection(setA, setB));
         assertEquals(Set.of("a", "b", "e"), Utilities.setSymmetricDifference(setA, setB));
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 10; i++)
             System.out.println("Random-extracting: " + Utilities.getRandomElement(setA));
-        }
-        for (int i = 0; i < 10; i++) {
+        
+        for (int i = 0; i < 10; i++)
             System.out.println("Random-extracting: " + Utilities.getRandomPair(setA, setB));
-        }
+        
+        
+        System.out.println("Unione: " + Utilities.setUnion(setA, setB));
+        System.out.println("Intersezione: " + Utilities.setIntersection(setA, setB));
+        
     }
 
-    private static void assertEquals(Object expected, Object actual) {
-        if (expected.equals(actual)) {
+    /* Confronto */
+    private static void assertEquals(Object expected, Object actual) 
+    {
+        if (expected.equals(actual))
             System.out.println("Ok!");
-        } else {
+        
+        else 
             System.err.println("ERROR: expected " + expected + " but got " + actual);
-        }
+        
     }
 }
